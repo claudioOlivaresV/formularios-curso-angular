@@ -1,1 +1,40 @@
-<p>dinamicos works!</p>
+<h2>Template: Dinamico</h2>
+<hr>
+
+<form (ngSubmit)="guardar();" autocomplete="off" #miFormulario="ngForm">
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Nombre</label>
+        <div class="col-sm-9">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Nombre de la persona"
+                   [(ngModel)]="persona.nombre"
+                   required
+                   name="nombre">
+            <span class="form-text text-danger" 
+                   *ngIf="miFormulario.controls['nombre']?.errors && miFormulario.controls['nombre'].touched">
+                   Debe ingresar un nombre</span>
+            
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Agregar</label>
+        <div class="col-sm-9">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Nombre de la persona"
+                   ngModel
+                   required
+                   name="nombre">
+            <span class="form-text text-danger" 
+                   *ngIf="miFormulario.controls['nombre']?.errors && miFormulario.controls['nombre'].touched">
+                   Debe ingresar un nombre</span>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-primary float-end" >Guardar</button>
+        </div>
+    </div>
+</form>

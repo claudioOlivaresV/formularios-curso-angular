@@ -1,23 +1,51 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
 
-import { DinamicosComponent } from './dinamicos.component';
+interface Persona {
+  nombre: string;
+  favoritos: Favorito[];
+}
 
-describe('DinamicosComponent', () => {
-  let component: DinamicosComponent;
-  let fixture: ComponentFixture<DinamicosComponent>;
+interface Favorito {
+  id: number;
+  nombre: string;
+}
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ DinamicosComponent ]
-    })
-    .compileComponents();
 
-    fixture = TestBed.createComponent(DinamicosComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+@Component({
+  selector: 'app-dinamicos',
+  templateUrl: './dinamicos.component.html',
+  styles: [
+  ]
+})
+export class DinamicosComponent {
+
+  nuevoJuego: string = '';
+
+  persona: Persona = {
+    nombre: 'Fernando',
+    favoritos: [
+      { id: 1, nombre: 'Metal Gear' },
+      { id: 2, nombre: 'Death Stranding' },
+    ]
+  }
+
+  agregarJuego() {
+    const nuevoFavorito: Favorito = {
+      id: this.persona.favoritos.length + 1,
+      nombre: this.nuevoJuego
+    }
+
+    this.persona.favoritos.push({ ...nuevoFavorito });
+    this.nuevoJuego = '';
+  }
+
+  eliminar( index: number ) {
+    this.persona.favoritos.splice(index, 1);
+  }
+
+
+  guardar() {
+    console.log('formulario posteado');
+  }
+}
