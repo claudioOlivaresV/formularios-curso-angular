@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { TemplateModule } from './template/template.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { TemplateModule } from './template/template.module';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    HttpClientModule,
     TemplateModule
   ],
   providers: [],
